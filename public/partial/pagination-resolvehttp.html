@@ -1,0 +1,39 @@
+<div class="row h2">
+	<div class="col-xs-12 col-sm-6 text-xs-center">
+		<!-- Per Page: <br/> -->
+		<div class="btn-group">
+			<button class="btn btn-default btn-sm" ng-click="setPerPage(10)">10</button>
+			<button class="btn btn-default btn-sm" ng-click="setPerPage(20)">20</button>
+			<button class="btn btn-default btn-sm" ng-click="setPerPage(50)">50</button>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 text-right text-xs-center">
+		<uib-pagination total-items="pagination.total_records" ng-model="pagination.page_number" items-per-page="pagination.page_size" max-size="5" boundary-links="true" class="pagination-sm"></uib-pagination>
+	</div>
+</div>
+<div class="table-responsive">
+	<table class="table table-stripped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Status</th>
+				<th>Address</th>
+				<th>Thumbnail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="company in companyAll">
+				<td>{{company.display_name}}</td>
+				<td>{{company.email}}</td>
+				<td>{{company.phone}}</td>
+				<td>{{company.status}}</td>
+				<td>{{parseAddress(company.address)}}</td>
+				<td>
+					<img ng-src="{{company.logo.path_to_file}}">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
